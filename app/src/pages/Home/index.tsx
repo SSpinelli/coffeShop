@@ -1,3 +1,9 @@
+import { Cover } from './Cover'
+
 export function Home() {
-  return <h1>Essa é a Home</h1>
+  return (
+    <>
+      <Cover />
+    </>
+  )
 }
