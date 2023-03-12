@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-family: 'Baloo2', cursive;
+    font-family: 'Baloo 2', cursive;
     color: ${(props) => props.theme['base-title']};
   }
 `
