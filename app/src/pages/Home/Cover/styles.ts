@@ -6,6 +6,7 @@ export const CoverContainer = styled.section`
   gap: 3.5rem;
   align-items: center;
   padding: 5.75rem 0;
+  position: relative;
 `
 
 export const InfoCoverContain = styled.div`
@@ -48,4 +49,26 @@ export const DetailsContainer = styled.div`
     align-items: center;
     gap: 0.5rem;
   }
+`
+
+const BLUR_COLOR = {
+  purpleBlur: 'purple',
+  yellowBlur: 'yellow',
+} as const
+
+interface BluredAreasProps {
+  left: string
+  top: string
+  blurColor: keyof typeof BLUR_COLOR
+}
+
+export const BluredAreas = styled.span<BluredAreasProps>`
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  background-color: ${(props) => props.theme[BLUR_COLOR[props.blurColor]]};
+  top: ${(props) => props.top};
+  left: ${(props) => props.left};
+  z-index: -50;
+  filter: blur(110px);
 `

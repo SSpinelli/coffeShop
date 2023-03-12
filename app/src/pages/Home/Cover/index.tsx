@@ -6,11 +6,24 @@ import {
   InfoCoverContain,
   Icon,
   DetailsContainer,
+  BluredAreas,
 } from './styles'
 
 export function Cover() {
   return (
     <CoverContainer>
+      <BluredAreas top={'350px'} left={'-150px'} blurColor="purpleBlur" />
+      <BluredAreas top={'350px'} left={'100px'} blurColor="yellowBlur" />
+      <BluredAreas top={'150px'} left={'-150px'} blurColor="yellowBlur" />
+      <BluredAreas top={'150px'} left={'300px'} blurColor="purpleBlur" />
+      <BluredAreas top={'400px'} left={'440px'} blurColor="yellowBlur" />
+      <BluredAreas top={'400px'} left={'640px'} blurColor="purpleBlur" />
+      <BluredAreas top={'100px'} left={'640px'} blurColor="yellowBlur" />
+      <BluredAreas top={'400px'} left={'1040px'} blurColor="yellowBlur" />
+      <BluredAreas top={'100px'} left={'940px'} blurColor="yellowBlur" />
+      <BluredAreas top={'300px'} left={'1240px'} blurColor="yellowBlur" />
+      <BluredAreas top={'100px'} left={'1040px'} blurColor="purpleBlur" />
+      <BluredAreas top={'100px'} left={'1240px'} blurColor="purpleBlur" />
       <InfoCoverContain>
         <h1>Encontre o café perfeito para qualquer hora do dia</h1>
         <DetailsContainer>
