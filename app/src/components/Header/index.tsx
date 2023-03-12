@@ -11,7 +11,7 @@ export function Header() {
       </NavLink>
       <CityAndCartContainer>
         <span>
-          <MapPin />
+          <MapPin weight="fill" />
           Recife, PE
         </span>
         <NavLink to="/checkout">
