@@ -31,10 +31,12 @@ export const CityAndCartContainer = styled.div`
     border-radius: 8px;
     color: ${(props) => props.theme['yellow-dark']};
     padding: 0.5rem 0.5rem 0.26rem 0.5rem;
-  }
 
-  a:hover {
-    background-color: ${(props) => props.theme['yellow-dark']};
-    color: ${(props) => props.theme['yellow-light']};
+    transition: background-color 0.1s, color 0.1s;
+
+    &:hover {
+      background-color: ${(props) => props.theme['yellow-dark']};
+      color: ${(props) => props.theme['yellow-light']};
+    }
   }
 `

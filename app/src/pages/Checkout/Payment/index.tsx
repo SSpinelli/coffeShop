@@ -1,10 +1,12 @@
+import * as RadioGroup from '@radix-ui/react-radio-group'
+import { CurrencyDollar, Money, CreditCard, Bank } from 'phosphor-react'
+
 import {
   PaymentContainer,
   TitleContainer,
   ButtonContainer,
-  PaymentButton,
+  PaymentMethod,
 } from './styles'
-import { CurrencyDollar, Money, CreditCard, Bank } from 'phosphor-react'
 
 export function Payment() {
   return (
@@ -14,20 +16,28 @@ export function Payment() {
         <h3>Pagamento</h3>
         <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
       </TitleContainer>
-      <ButtonContainer>
-        <PaymentButton type="button">
-          <CreditCard />
-          CARTÃO DE CRÉDITO
-        </PaymentButton>
-        <PaymentButton type="button">
-          <Bank />
-          CARTÃO DE DÉBITO
-        </PaymentButton>
-        <PaymentButton type="button">
-          <Money />
-          DINHEIRO
-        </PaymentButton>
-      </ButtonContainer>
+      <RadioGroup.Root>
+        <ButtonContainer>
+          <PaymentMethod>
+            <RadioGroup.Item value="Cartão de crédito">
+              <CreditCard />
+              CARTÃO DE CRÉDITO
+            </RadioGroup.Item>
+          </PaymentMethod>
+          <PaymentMethod>
+            <RadioGroup.Item value="Cartão de débito">
+              <Bank />
+              CARTÃO DE DÉBITO
+            </RadioGroup.Item>
+          </PaymentMethod>
+          <PaymentMethod>
+            <RadioGroup.Item value="dinheiro">
+              <Money />
+              DINHEIRO
+            </RadioGroup.Item>
+          </PaymentMethod>
+        </ButtonContainer>
+      </RadioGroup.Root>
     </PaymentContainer>
   )
 }

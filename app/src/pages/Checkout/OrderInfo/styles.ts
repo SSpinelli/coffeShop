@@ -48,6 +48,8 @@ export const SubmitButton = styled.button`
 
   color: ${(props) => props.theme.white};
 
+  transition: background-color 0.1s;
+
   &:hover {
     background-color: ${(props) => props.theme['yellow-dark']};
   }

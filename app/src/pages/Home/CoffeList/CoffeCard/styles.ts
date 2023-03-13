@@ -25,8 +25,13 @@ export const CoffeCardContainer = styled.div`
   }
 `
 
-export const Tag = styled.span`
+export const TagContainer = styled.div`
+  display: flex;
+  gap: 0.3rem;
   margin-top: 85px;
+`
+
+export const Tag = styled.span`
   padding: 0.25rem 0.5rem;
   background-color: ${(props) => props.theme['yellow-light']};
   color: ${(props) => props.theme['yellow-dark']};
@@ -95,6 +100,7 @@ export const PlusAndMinusButton = styled.button`
   border: 0;
   color: ${(props) => props.theme.purple};
   cursor: pointer;
+  transition: background-color 0.1s;
 
   &:hover {
     color: ${(props) => props.theme['purple-dark']};
@@ -112,6 +118,7 @@ export const AddToCart = styled.a`
   min-width: 38px;
   border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.1s;
 
   &:hover {
     background-color: ${(props) => props.theme.purple};

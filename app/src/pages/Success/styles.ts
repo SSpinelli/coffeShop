@@ -34,9 +34,27 @@ export const InfoOrderContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
-  border: 1px solid gray;
+  position: relative;
+  background-color: ${(props) => props.theme.background};
   border-radius: 6px 36px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 479px;
+    height: 260.5px;
+    top: -1px;
+    left: -1px;
+    border-radius: 6px 36px;
+    background-image: linear-gradient(
+      45deg,
+      #dbac2c,
+      #c47f17,
+      #4b2995,
+      #8047f8
+    );
+    z-index: -50;
+  }
 `
 const ICON_COLOR = {
   purple: 'purple',

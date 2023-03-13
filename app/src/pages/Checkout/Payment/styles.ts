@@ -34,29 +34,39 @@ export const TitleContainer = styled.div`
 `
 
 export const ButtonContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 0.75rem;
 `
 
-export const PaymentButton = styled.button`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex: 1;
-  border: 0;
-  padding: 1rem;
-  background-color: ${(props) => props.theme['base-button']};
-  color: ${(props) => props.theme['base-text']};
-  font-size: 0.75rem;
-  border-radius: 6px;
-  line-height: 160%;
-  cursor: pointer;
+export const PaymentMethod = styled.div`
+  button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid transparent;
+    padding: 1rem;
+    background-color: ${(props) => props.theme['base-button']};
+    color: ${(props) => props.theme['base-text']};
+    font-size: 0.75rem;
+    border-radius: 6px;
+    line-height: 160%;
+    cursor: pointer;
+    width: 100%;
 
-  svg {
-    color: ${(props) => props.theme.purple};
-  }
+    transition: background-color 0.1s;
 
-  &:hover {
-    background-color: ${(props) => props.theme['base-hover']};
+    svg {
+      color: ${(props) => props.theme.purple};
+    }
+
+    &:hover {
+      background-color: ${(props) => props.theme['base-hover']};
+    }
+
+    &[data-state='checked'] {
+      background-color: ${(props) => props.theme['purple-light']};
+      border: 1px solid ${(props) => props.theme.purple};
+    }
   }
 `
