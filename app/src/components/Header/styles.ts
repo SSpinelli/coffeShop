@@ -32,4 +32,9 @@ export const CityAndCartContainer = styled.div`
     color: ${(props) => props.theme['yellow-dark']};
     padding: 0.5rem 0.5rem 0.26rem 0.5rem;
   }
+
+  a:hover {
+    background-color: ${(props) => props.theme['yellow-dark']};
+    color: ${(props) => props.theme['yellow-light']};
+  }
 `
