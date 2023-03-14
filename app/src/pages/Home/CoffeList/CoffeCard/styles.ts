@@ -107,7 +107,7 @@ export const PlusAndMinusButton = styled.button`
   }
 `
 
-export const AddToCart = styled.a`
+export const AddToCart = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,6 +117,7 @@ export const AddToCart = styled.a`
   min-height: 38px;
   min-width: 38px;
   border-radius: 6px;
+  border: 0;
   cursor: pointer;
   transition: background-color 0.1s;
 

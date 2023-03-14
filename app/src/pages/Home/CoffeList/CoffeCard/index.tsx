@@ -1,4 +1,5 @@
 import { ShoppingCart, Plus, Minus } from 'phosphor-react'
+import { MouseEvent, useState } from 'react'
 
 import {
   CoffeCardContainer,
@@ -25,6 +26,27 @@ interface CoffeCardProps {
 export function CoffeCard({
   data: { tags, name, description, thumbnail, price },
 }: CoffeCardProps) {
+  const [quantity, setQuantity] = useState(0)
+
+  function handlePlusAndMinusButton(e: MouseEvent<HTMLButtonElement>) {
+    if (e.currentTarget.name === 'plus') {
+      setQuantity(quantity + 1)
+    } else {
+      quantity > 0 && setQuantity(quantity - 1)
+    }
+  }
+
+  function handleSentToCartButton() {
+    const newItem = {
+      thumbnail,
+      name,
+      price,
+      quantity,
+      id: String(new Date().getTime()),
+    }
+    console.log(newItem)
+  }
+
   return (
     <CoffeCardContainer>
       <img src={thumbnail} alt="" />
@@ -42,15 +64,15 @@ export function CoffeCard({
         </p>
         <Quantity>
           <ButtonContainer>
-            <PlusAndMinusButton>
+            <PlusAndMinusButton onClick={handlePlusAndMinusButton}>
               <Minus width={14} />
             </PlusAndMinusButton>
-            <span>1</span>
-            <PlusAndMinusButton>
+            <span>{quantity}</span>
+            <PlusAndMinusButton name="plus" onClick={handlePlusAndMinusButton}>
               <Plus width={14} />
             </PlusAndMinusButton>
           </ButtonContainer>
-          <AddToCart>
+          <AddToCart onClick={handleSentToCartButton}>
             <ShoppingCart width={22} weight="fill" />
           </AddToCart>
         </Quantity>
