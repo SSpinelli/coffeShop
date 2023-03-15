@@ -16,6 +16,30 @@ export function handleReducer(state: iOrder[], action: any) {
       const newOrder = state.filter((item) => item.id !== action.payload)
       return newOrder
     }
+    case ActionTypes.DECREASE_QTD_OF_ITEM: {
+      const newOrder = state.map((item) => {
+        if (item.id === action.payload) {
+          return {
+            ...item,
+            quantity: item.quantity - 1,
+          }
+        }
+        return item
+      })
+      return newOrder
+    }
+    case ActionTypes.INCREASE_QTD_OF_ITEM: {
+      const newOrder = state.map((item) => {
+        if (item.id === action.payload) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          }
+        }
+        return item
+      })
+      return newOrder
+    }
     default:
       return state
   }

@@ -1,6 +1,8 @@
 import { createContext, ReactNode, useReducer } from 'react'
 import {
   addItemToOrderAction,
+  decreaseQuantityOfItemAction,
+  increaseQuantityOfItemAction,
   removeItemFromOrderAction,
 } from '../reducer/action'
 import { handleReducer, iOrder } from '../reducer/reducer'
@@ -10,6 +12,8 @@ interface OrderContextType {
   order: iOrder[]
   addItemToOrder: (newItem: iOrder) => void
   removeItemFromOrder: (id: string) => void
+  decreaseQtdOfItem: (id: string) => void
+  increaseQtdOfItem: (id: string) => void
 }
 
 interface OrderContextProviderProps {
@@ -29,12 +33,22 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
     dispatchToOrder(removeItemFromOrderAction(id))
   }
 
+  function decreaseQtdOfItem(id: string) {
+    dispatchToOrder(decreaseQuantityOfItemAction(id))
+  }
+
+  function increaseQtdOfItem(id: string) {
+    dispatchToOrder(increaseQuantityOfItemAction(id))
+  }
+
   return (
     <OrderContext.Provider
       value={{
         order,
         addItemToOrder,
         removeItemFromOrder,
+        decreaseQtdOfItem,
+        increaseQtdOfItem,
       }}
     >
       {children}

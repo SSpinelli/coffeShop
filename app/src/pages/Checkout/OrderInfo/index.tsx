@@ -12,6 +12,16 @@ import {
 
 export function OrderInfo() {
   const { order } = useContext(OrderContext)
+
+  function totalPrice() {
+    const total = order.reduce(
+      (acc, current) => acc + Number(current.price) * current.quantity,
+      0,
+    )
+
+    return total.toFixed(2)
+  }
+
   return (
     <OrderContainer>
       {order.map((item) => {
@@ -20,13 +30,13 @@ export function OrderInfo() {
       <TotalInfoContainer>
         <PriceInfo>
           <p>
-            Total de itens <span>R$29,70</span>
+            Total de itens <span>R${totalPrice()}</span>
           </p>
           <p>
             Entrega <span>R$3,50</span>
           </p>
           <h3>
-            Total <span>R$33,20</span>
+            Total <span>R${(Number(totalPrice()) + 3.5).toFixed(2)}</span>
           </h3>
         </PriceInfo>
         <SubmitButton type="button">

@@ -18,10 +18,21 @@ interface iCheckoutCard {
 }
 
 export function CoffeCheckoutCard({ data }: iCheckoutCard) {
-  const { removeItemFromOrder } = useContext(OrderContext)
+  const { removeItemFromOrder, decreaseQtdOfItem, increaseQtdOfItem } =
+    useContext(OrderContext)
 
   function handleRemoveButton() {
     removeItemFromOrder(data.id)
+  }
+
+  function handleMinusButton() {
+    if (data.quantity > 1) {
+      decreaseQtdOfItem(data.id)
+    }
+  }
+
+  function handlePlusButton() {
+    increaseQtdOfItem(data.id)
   }
 
   return (
@@ -32,11 +43,11 @@ export function CoffeCheckoutCard({ data }: iCheckoutCard) {
           <h2>{data.name}</h2>
           <ButtonContainer>
             <PlusAndMinusContainer>
-              <PlusAndMinusButton type="button">
+              <PlusAndMinusButton onClick={handlePlusButton} type="button">
                 <Plus width={14} />
               </PlusAndMinusButton>
               <span>{data.quantity}</span>
-              <PlusAndMinusButton type="button">
+              <PlusAndMinusButton onClick={handleMinusButton} type="button">
                 <Minus width={14} />
               </PlusAndMinusButton>
             </PlusAndMinusContainer>
