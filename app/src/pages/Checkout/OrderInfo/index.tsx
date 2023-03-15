@@ -1,4 +1,7 @@
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { OrderContext } from '../../../context/OrderContext'
+import { CoffeCheckoutCard } from './CoffeCheckoutCard'
 
 import {
   OrderContainer,
@@ -8,8 +11,12 @@ import {
 } from './styles'
 
 export function OrderInfo() {
+  const { order } = useContext(OrderContext)
   return (
     <OrderContainer>
+      {order.map((item) => {
+        return <CoffeCheckoutCard key={item.id} data={item} />
+      })}
       <TotalInfoContainer>
         <PriceInfo>
           <p>

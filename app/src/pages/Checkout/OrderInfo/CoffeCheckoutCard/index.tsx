@@ -1,5 +1,7 @@
 import { Plus, Minus, Trash } from 'phosphor-react'
-import expresso from '../../../../assets/Coffee/expresso.svg'
+import { useContext } from 'react'
+import { OrderContext } from '../../../../context/OrderContext'
+import { iOrder } from '../../../../reducer/reducer'
 import {
   CoffeCheckouCardContainer,
   MainInfoCard,
@@ -11,31 +13,42 @@ import {
   Price,
 } from './styles'
 
-export function CoffeCheckoutCard() {
+interface iCheckoutCard {
+  data: iOrder
+}
+
+export function CoffeCheckoutCard({ data }: iCheckoutCard) {
+  const { removeItemFromOrder } = useContext(OrderContext)
+
+  function handleRemoveButton() {
+    removeItemFromOrder(data.id)
+  }
+
   return (
     <CoffeCheckouCardContainer>
       <MainInfoCard>
-        <img src={expresso} alt="" />
+        <img src={data.thumbnail} alt="" />
         <QuantityInfo>
-          <h2>Expresso Tradicional</h2>
+          <h2>{data.name}</h2>
           <ButtonContainer>
             <PlusAndMinusContainer>
               <PlusAndMinusButton type="button">
                 <Plus width={14} />
               </PlusAndMinusButton>
-              <span>1</span>
+              <span>{data.quantity}</span>
               <PlusAndMinusButton type="button">
                 <Minus width={14} />
               </PlusAndMinusButton>
             </PlusAndMinusContainer>
-            <RemoveButton type="button">
+            <RemoveButton onClick={handleRemoveButton} type="button">
               <Trash width={16} />
               REMOVER
             </RemoveButton>
           </ButtonContainer>
         </QuantityInfo>
         <Price>
-          <span>R$</span>9,90
+          <span>R$</span>
+          {(Number(data.price) * data.quantity).toFixed(2)}
         </Price>
       </MainInfoCard>
     </CoffeCheckouCardContainer>

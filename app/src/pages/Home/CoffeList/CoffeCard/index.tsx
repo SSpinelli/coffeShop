@@ -1,5 +1,6 @@
 import { ShoppingCart, Plus, Minus } from 'phosphor-react'
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useContext, useState } from 'react'
+import { OrderContext } from '../../../../context/OrderContext'
 
 import {
   CoffeCardContainer,
@@ -27,6 +28,7 @@ export function CoffeCard({
   data: { tags, name, description, thumbnail, price },
 }: CoffeCardProps) {
   const [quantity, setQuantity] = useState(0)
+  const { addItemToOrder } = useContext(OrderContext)
 
   function handlePlusAndMinusButton(e: MouseEvent<HTMLButtonElement>) {
     if (e.currentTarget.name === 'plus') {
@@ -44,7 +46,8 @@ export function CoffeCard({
       quantity,
       id: String(new Date().getTime()),
     }
-    console.log(newItem)
+    addItemToOrder(newItem)
+    setQuantity(0)
   }
 
   return (
