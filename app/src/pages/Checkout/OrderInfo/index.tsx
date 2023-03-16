@@ -1,5 +1,4 @@
 import { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
 import { OrderContext } from '../../../context/OrderContext'
 import { CoffeCheckoutCard } from './CoffeCheckoutCard'
 
@@ -11,7 +10,7 @@ import {
 } from './styles'
 
 export function OrderInfo() {
-  const { order } = useContext(OrderContext)
+  const { order, address, paymentMethod } = useContext(OrderContext)
 
   function totalPrice() {
     const total = order.reduce(
@@ -20,6 +19,11 @@ export function OrderInfo() {
     )
 
     return total.toFixed(2)
+  }
+
+  function isSubmitDisabled() {
+    // Vou precisar usar um watch para checar os campos do input.
+    return !address.rua && !address.UF && !address.bairro && !paymentMethod
   }
 
   return (
@@ -39,8 +43,8 @@ export function OrderInfo() {
             Total <span>R${(Number(totalPrice()) + 3.5).toFixed(2)}</span>
           </h3>
         </PriceInfo>
-        <SubmitButton type="button">
-          <NavLink to="/success">CONFIRMAR PEDIDO</NavLink>
+        <SubmitButton disabled={isSubmitDisabled()} type="submit">
+          CONFIRMAR PEDIDO
         </SubmitButton>
       </TotalInfoContainer>
     </OrderContainer>

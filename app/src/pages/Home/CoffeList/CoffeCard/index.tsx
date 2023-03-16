@@ -75,7 +75,7 @@ export function CoffeCard({
               <Plus width={14} />
             </PlusAndMinusButton>
           </ButtonContainer>
-          <AddToCart onClick={handleSentToCartButton}>
+          <AddToCart disabled={!quantity} onClick={handleSentToCartButton}>
             <ShoppingCart width={22} weight="fill" />
           </AddToCart>
         </Quantity>

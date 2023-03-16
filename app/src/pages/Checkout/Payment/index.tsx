@@ -1,5 +1,7 @@
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import { CurrencyDollar, Money, CreditCard, Bank } from 'phosphor-react'
+import { MouseEvent, MouseEventHandler, RefAttributes, useContext } from 'react'
+import { OrderContext } from '../../../context/OrderContext'
 
 import {
   PaymentContainer,
@@ -9,6 +11,12 @@ import {
 } from './styles'
 
 export function Payment() {
+  const { changePaymentMethod } = useContext(OrderContext)
+
+  function handlePaymentMethod(e: MouseEvent<HTMLButtonElement>) {
+    changePaymentMethod(e.currentTarget.value)
+  }
+
   return (
     <PaymentContainer>
       <TitleContainer>
@@ -19,19 +27,25 @@ export function Payment() {
       <RadioGroup.Root>
         <ButtonContainer>
           <PaymentMethod>
-            <RadioGroup.Item value="Cartão de crédito">
+            <RadioGroup.Item
+              onClick={handlePaymentMethod}
+              value="Cartão de Crédito"
+            >
               <CreditCard />
               CARTÃO DE CRÉDITO
             </RadioGroup.Item>
           </PaymentMethod>
           <PaymentMethod>
-            <RadioGroup.Item value="Cartão de débito">
+            <RadioGroup.Item
+              onClick={handlePaymentMethod}
+              value="Cartão de Débito"
+            >
               <Bank />
               CARTÃO DE DÉBITO
             </RadioGroup.Item>
           </PaymentMethod>
           <PaymentMethod>
-            <RadioGroup.Item value="dinheiro">
+            <RadioGroup.Item onClick={handlePaymentMethod} value="Dinheiro">
               <Money />
               DINHEIRO
             </RadioGroup.Item>

@@ -121,7 +121,12 @@ export const AddToCart = styled.button`
   cursor: pointer;
   transition: background-color 0.1s;
 
-  &:hover {
+  &:not(:disabled):hover {
     background-color: ${(props) => props.theme.purple};
+  }
+
+  &:disabled {
+    background-color: ${(props) => props.theme['base-hover']};
+    cursor: not-allowed;
   }
 `

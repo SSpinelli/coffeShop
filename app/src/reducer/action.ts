@@ -5,6 +5,7 @@ export enum ActionTypes {
   REMOVE_ITEM_FROM_ORDER = 'REMOVE_ITEM_FROM_ORDER',
   DECREASE_QTD_OF_ITEM = 'DECREASE_QTD_OF_ITEM',
   INCREASE_QTD_OF_ITEM = 'INCREASE_QTD_OF_ITEM',
+  ERASE_ALL_ITENS = 'ERASE_ALL_ITENS',
 }
 
 export function addItemToOrderAction(newItem: iOrder) {
@@ -32,5 +33,11 @@ export function increaseQuantityOfItemAction(id: string) {
   return {
     type: ActionTypes.INCREASE_QTD_OF_ITEM,
     payload: id,
+  }
+}
+
+export function eraseAllItensAction() {
+  return {
+    type: ActionTypes.ERASE_ALL_ITENS,
   }
 }

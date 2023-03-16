@@ -50,7 +50,12 @@ export const SubmitButton = styled.button`
 
   transition: background-color 0.1s;
 
-  &:hover {
+  &:not(:disabled):hover {
     background-color: ${(props) => props.theme['yellow-dark']};
+  }
+
+  &:disabled {
+    background-color: ${(props) => props.theme['base-hover']};
+    cursor: not-allowed;
   }
 `

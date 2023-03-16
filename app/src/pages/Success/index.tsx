@@ -1,5 +1,7 @@
 import { MapPin, Timer, CurrencyDollar } from 'phosphor-react'
+import { useContext } from 'react'
 import ilustration from '../../assets/successIlustration.svg'
+import { OrderContext } from '../../context/OrderContext'
 
 import {
   SuccessContainer,
@@ -10,6 +12,7 @@ import {
 } from './styles'
 
 export function Success() {
+  const { paymentMethod, address } = useContext(OrderContext)
   return (
     <SuccessContainer>
       <MainContainer>
@@ -23,9 +26,12 @@ export function Success() {
               <MapPin width={16} weight="fill" />
             </div>
             <span>
-              Entrega em <strong>Rua Jacobina, 130</strong>
+              Entrega em{' '}
+              <strong>
+                {address.rua}, {address.numero}
+              </strong>
             </span>
-            Graças - Recife, PE
+            {address.bairro} - {address.cidade}, {address.UF}
           </ParagraphInfo>
           <ParagraphInfo iconColor="yellow">
             <div>
@@ -42,7 +48,7 @@ export function Success() {
             </div>
             Pagamento na entrega
             <span>
-              <strong>Cartão de Crédito</strong>
+              <strong>{paymentMethod}</strong>
             </span>
           </ParagraphInfo>
         </InfoOrderContainer>

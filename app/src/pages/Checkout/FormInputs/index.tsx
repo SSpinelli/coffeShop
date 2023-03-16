@@ -1,7 +1,12 @@
 import { MapPinLine } from 'phosphor-react'
 import { FormInputContainer, InputGrid, Input, TitleContainer } from './styles'
+import { FieldValues, UseFormRegister } from 'react-hook-form'
 
-export function FormInputs() {
+interface iFormInput {
+  register: UseFormRegister<FieldValues>
+}
+
+export function FormInputs({ register }: iFormInput) {
   return (
     <FormInputContainer>
       <TitleContainer>
@@ -10,13 +15,23 @@ export function FormInputs() {
         <p>Informe o endereço onde deseja receber seu pedido</p>
       </TitleContainer>
       <InputGrid>
-        <Input type="text" placeholder="CEP" />
-        <Input type="text" placeholder="Rua" className="street" />
-        <Input type="text" placeholder="Número" />
-        <Input type="text" placeholder="Complemento" className="moreInfo" />
-        <Input type="text" placeholder="Bairro" />
-        <Input type="text" placeholder="Cidade" />
-        <Input type="text" placeholder="UF" />
+        <Input type="text" placeholder="CEP" {...register('cep')} />
+        <Input
+          type="text"
+          placeholder="Rua"
+          className="street"
+          {...register('rua')}
+        />
+        <Input type="text" placeholder="Número" {...register('numero')} />
+        <Input
+          type="text"
+          placeholder="Complemento"
+          className="moreInfo"
+          {...register('complemento')}
+        />
+        <Input type="text" placeholder="Bairro" {...register('bairro')} />
+        <Input type="text" placeholder="Cidade" {...register('cidade')} />
+        <Input type="text" placeholder="UF" {...register('uf')} />
       </InputGrid>
     </FormInputContainer>
   )

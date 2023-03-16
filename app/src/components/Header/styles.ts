@@ -12,19 +12,7 @@ export const CityAndCartContainer = styled.div`
   display: flex;
   gap: 0.75rem;
   justify-content: center;
-
-  span {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-
-    background-color: ${(props) => props.theme['purple-light']};
-    border-radius: 8px;
-    color: ${(props) => props.theme['purple-dark']};
-    font-size: 0.875rem;
-    line-height: 130%;
-    padding: 0.5rem;
-  }
+  position: relative;
 
   a {
     background-color: ${(props) => props.theme['yellow-light']};
@@ -33,10 +21,31 @@ export const CityAndCartContainer = styled.div`
     padding: 0.5rem 0.5rem 0.26rem 0.5rem;
 
     transition: background-color 0.1s, color 0.1s;
-
-    &:hover {
-      background-color: ${(props) => props.theme['yellow-dark']};
-      color: ${(props) => props.theme['yellow-light']};
-    }
   }
+`
+
+export const CityAndUF = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  background-color: ${(props) => props.theme['purple-light']};
+  border-radius: 8px;
+  color: ${(props) => props.theme['purple-dark']};
+  font-size: 0.875rem;
+  line-height: 130%;
+  padding: 0.5rem;
+`
+
+export const QuantityInCart = styled.span`
+  position: absolute;
+  padding: 0.2rem 0.4rem;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  top: -8px;
+  right: -8px;
+  background-color: ${(props) => props.theme['yellow-dark']};
+  color: ${(props) => props.theme['yellow-light']};
 `

@@ -40,6 +40,8 @@ export function handleReducer(state: iOrder[], action: any) {
       })
       return newOrder
     }
+    case ActionTypes.ERASE_ALL_ITENS:
+      return []
     default:
       return state
   }
