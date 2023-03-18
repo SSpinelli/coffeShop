@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useReducer, useState } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react'
 import {
   addItemToOrderAction,
   decreaseQuantityOfItemAction,
@@ -39,7 +45,21 @@ interface OrderContextProviderProps {
 export const OrderContext = createContext({} as OrderContextType)
 
 export function OrderContextProvider({ children }: OrderContextProviderProps) {
-  const [order, dispatchToOrder] = useReducer(handleReducer, [])
+  const [order, dispatchToOrder] = useReducer(
+    handleReducer,
+    [],
+    (initialState) => {
+      const storedStateAtJSON = localStorage.getItem(
+        '@coffe-shop:order-state-1.0.0',
+      )
+
+      if (storedStateAtJSON) {
+        return JSON.parse(storedStateAtJSON)
+      }
+
+      return initialState
+    },
+  )
   const [paymentMethod, setPaymentMethod] = useState('')
   const [address, setAddress] = useState<Address>({
     cep: '',
@@ -78,6 +98,25 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
   function eraseAllItensInOrder() {
     dispatchToOrder(eraseAllItensAction())
   }
+
+  useEffect(() => {
+    const stateOrderJSON = JSON.stringify(order)
+    if (address.cep !== '') {
+      const stateAddressJSON = JSON.stringify(address)
+      localStorage.setItem('@coffe-shop:address-state-1.0.0', stateAddressJSON)
+    }
+
+    localStorage.setItem('@coffe-shop:order-state-1.0.0', stateOrderJSON)
+  }, [order, address])
+
+  useEffect(() => {
+    const storedAddressStateAtJSON = localStorage.getItem(
+      '@coffe-shop:address-state-1.0.0',
+    )
+    if (storedAddressStateAtJSON) {
+      setAddress(JSON.parse(storedAddressStateAtJSON))
+    }
+  }, [])
 
   return (
     <OrderContext.Provider
