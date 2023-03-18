@@ -10,7 +10,7 @@ import { OrderContext } from '../../context/OrderContext'
 
 export function Checkout() {
   const { changeAddress, eraseAllItensInOrder } = useContext(OrderContext)
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, watch } = useForm()
   const navigate = useNavigate()
 
   function handleUserInfo(data: any) {
@@ -29,7 +29,7 @@ export function Checkout() {
         </UserInfoContainer>
         <OrderInfoContainer>
           <h2>Cafés selecionados</h2>
-          <OrderInfo />
+          <OrderInfo watch={watch} />
         </OrderInfoContainer>
       </FormContainer>
     </main>

@@ -1,6 +1,6 @@
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import { CurrencyDollar, Money, CreditCard, Bank } from 'phosphor-react'
-import { MouseEvent, MouseEventHandler, RefAttributes, useContext } from 'react'
+import { MouseEvent, useContext, useEffect } from 'react'
 import { OrderContext } from '../../../context/OrderContext'
 
 import {
@@ -16,6 +16,11 @@ export function Payment() {
   function handlePaymentMethod(e: MouseEvent<HTMLButtonElement>) {
     changePaymentMethod(e.currentTarget.value)
   }
+
+  useEffect(() => {
+    changePaymentMethod('')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <PaymentContainer>

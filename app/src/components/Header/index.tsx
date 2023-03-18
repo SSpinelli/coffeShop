@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   HeaderComponent,
   CityAndCartContainer,
@@ -11,7 +12,7 @@ import { useContext } from 'react'
 import { OrderContext } from '../../context/OrderContext'
 
 export function Header() {
-  const { order } = useContext(OrderContext)
+  const { order, address } = useContext(OrderContext)
   return (
     <HeaderComponent>
       <NavLink to="/">
@@ -20,7 +21,7 @@ export function Header() {
       <CityAndCartContainer>
         <CityAndUF>
           <MapPin weight="fill" />
-          Recife, PE
+          {`${address.cidade.length ? address.cidade : 'Onde você está?'} - ${address.uf.length ? address.uf : 'XX'}`}
         </CityAndUF>
         <NavLink to="/checkout">
           {order.length ? (

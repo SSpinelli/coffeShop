@@ -1,6 +1,7 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { OrderContext } from '../../../context/OrderContext'
 import { CoffeCheckoutCard } from './CoffeCheckoutCard'
+import { FieldValues, UseFormWatch } from 'react-hook-form'
 
 import {
   OrderContainer,
@@ -9,8 +10,14 @@ import {
   TotalInfoContainer,
 } from './styles'
 
-export function OrderInfo() {
-  const { order, address, paymentMethod } = useContext(OrderContext)
+interface iOrderInfo {
+  watch: UseFormWatch<FieldValues>
+}
+
+export function OrderInfo({ watch }: iOrderInfo) {
+  const { order, paymentMethod } = useContext(OrderContext)
+
+  const [disableSubmit, setDisableSubmit] = useState(true)
 
   function totalPrice() {
     const total = order.reduce(
@@ -21,10 +28,34 @@ export function OrderInfo() {
     return total.toFixed(2)
   }
 
-  function isSubmitDisabled() {
-    // Vou precisar usar um watch para checar os campos do input.
-    return !address.rua && !address.UF && !address.bairro && !paymentMethod
-  }
+  const cep = watch('cep')
+  const rua = watch('rua')
+  const numero = watch('numero')
+  const bairro = watch('bairro')
+  const cidade = watch('cidade')
+  const estado = watch('uf')
+
+  useEffect(() => {
+    if (
+      cep &&
+      cep.length === 8 &&
+      rua &&
+      numero &&
+      bairro &&
+      cidade &&
+      estado &&
+      paymentMethod &&
+      order.length > 0
+    ) {
+      setDisableSubmit(false)
+    } else {
+      setDisableSubmit(true)
+    }
+  }, [cep, rua, numero, bairro, cidade, estado, paymentMethod, order])
+
+  useEffect(() => {
+    setDisableSubmit(true)
+  }, [])
 
   return (
     <OrderContainer>
@@ -43,7 +74,7 @@ export function OrderInfo() {
             Total <span>R${(Number(totalPrice()) + 3.5).toFixed(2)}</span>
           </h3>
         </PriceInfo>
-        <SubmitButton disabled={isSubmitDisabled()} type="submit">
+        <SubmitButton disabled={disableSubmit} type="submit">
           CONFIRMAR PEDIDO
         </SubmitButton>
       </TotalInfoContainer>

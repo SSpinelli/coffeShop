@@ -16,7 +16,7 @@ export interface Address {
   moreInfo?: string
   bairro: string
   cidade: string
-  UF: string
+  uf: string
 }
 
 interface OrderContextType {
@@ -48,7 +48,7 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
     moreInfo: '',
     bairro: '',
     cidade: '',
-    UF: '',
+    uf: '',
   })
 
   function addItemToOrder(newItem: iOrder) {
