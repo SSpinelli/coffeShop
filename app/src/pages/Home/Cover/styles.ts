@@ -7,6 +7,15 @@ export const CoverContainer = styled.section`
   align-items: center;
   padding: 5.75rem 0;
   position: relative;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+
+    img {
+      width: 300px;
+    }
+  }
 `
 
 export const InfoCoverContain = styled.div`
@@ -18,6 +27,28 @@ export const InfoCoverContain = styled.div`
     font-size: 3rem;
     line-height: 130%;
     font-weight: 800;
+  }
+
+  @media (max-width: 430px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
+    h1 {
+      text-align: center;
+    }
   }
 `
 

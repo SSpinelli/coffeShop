@@ -20,12 +20,16 @@ export function OrderInfo({ watch }: iOrderInfo) {
   const [disableSubmit, setDisableSubmit] = useState(true)
 
   function totalPrice() {
-    const total = order.reduce(
+    const shipping = 3.5
+
+    let total = order.reduce(
       (acc, current) => acc + Number(current.price) * current.quantity,
       0,
     )
 
-    return total.toFixed(2)
+    total += shipping
+
+    return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
   }
 
   const cep = watch('cep')
@@ -65,13 +69,13 @@ export function OrderInfo({ watch }: iOrderInfo) {
       <TotalInfoContainer>
         <PriceInfo>
           <p>
-            Total de itens <span>R${totalPrice()}</span>
+            Total de itens <span>{totalPrice()}</span>
           </p>
           <p>
             Entrega <span>R$3,50</span>
           </p>
           <h3>
-            Total <span>R${(Number(totalPrice()) + 3.5).toFixed(2)}</span>
+            Total <span>{totalPrice()}</span>
           </h3>
         </PriceInfo>
         <SubmitButton disabled={disableSubmit} type="submit">

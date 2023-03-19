@@ -58,8 +58,10 @@ export function CoffeCheckoutCard({ data }: iCheckoutCard) {
           </ButtonContainer>
         </QuantityInfo>
         <Price>
-          <span>R$</span>
-          {(Number(data.price) * data.quantity).toFixed(2)}
+          {(Number(data.price) * data.quantity).toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+          })}
         </Price>
       </MainInfoCard>
     </CoffeCheckouCardContainer>

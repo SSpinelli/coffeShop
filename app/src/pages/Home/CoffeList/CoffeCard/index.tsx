@@ -63,7 +63,7 @@ export function CoffeCard({
       <PriceAndQuantity>
         <p>
           <span>R$</span>
-          {price}
+          {price.replace('.', ',')}
         </p>
         <Quantity>
           <ButtonContainer>

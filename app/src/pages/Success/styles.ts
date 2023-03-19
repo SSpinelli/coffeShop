@@ -6,6 +6,12 @@ export const SuccessContainer = styled.main`
   align-items: flex-end;
   padding-top: 4rem;
   gap: 3rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 
 export const MainContainer = styled.div`
@@ -37,12 +43,14 @@ export const InfoOrderContainer = styled.div`
   position: relative;
   background-color: ${(props) => props.theme.background};
   border-radius: 6px 36px;
+  width: 29.8rem;
+  height: 16.15rem;
 
   &::before {
     content: '';
     position: absolute;
-    width: 479px;
-    height: 260.5px;
+    width: 29.93rem;
+    height: 16.28rem;
     top: -1px;
     left: -1px;
     border-radius: 6px 36px;

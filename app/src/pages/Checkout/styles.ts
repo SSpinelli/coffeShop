@@ -13,6 +13,10 @@ export const FormContainer = styled.form`
     font-weight: 700;
     color: ${(props) => props.theme['base-subtitle']};
   }
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
 `
 export const UserInfoContainer = styled.section`
   display: flex;

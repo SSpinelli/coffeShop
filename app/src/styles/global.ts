@@ -23,4 +23,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Baloo 2', cursive;
     color: ${(props) => props.theme['base-title']};
   }
+
+  @media (max-width:768px) {
+    html {
+      font-size: 87.5%;
+    }
+  }
 `
