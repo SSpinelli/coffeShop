@@ -31,7 +31,7 @@ export function Success() {
                 {address.rua}, {address.numero}
               </strong>
             </span>
-            {address.bairro} - {address.cidade}, {address.UF}
+            {address.bairro} - {address.cidade}, {address.uf}
           </ParagraphInfo>
           <ParagraphInfo iconColor="yellow">
             <div>
