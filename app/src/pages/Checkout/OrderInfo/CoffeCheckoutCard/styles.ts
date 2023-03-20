@@ -8,6 +8,10 @@ export const CoffeCheckouCardContainer = styled.div`
     width: 4rem;
     height: 4rem;
   }
+
+  @media (max-width: 373px) {
+    padding: 0 60px 0 10px;
+  }
 `
 
 export const MainInfoCard = styled.div`
@@ -16,6 +20,10 @@ export const MainInfoCard = styled.div`
   gap: 1.25rem;
   border-bottom: 1px solid ${(props) => props.theme['base-button']};
   padding: 1.5rem 0;
+
+  @media (max-width: 373px) {
+    gap: 0;
+  }
 `
 
 export const QuantityInfo = styled.div`

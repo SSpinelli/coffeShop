@@ -24,8 +24,9 @@ export const UserInfoContainer = styled.section`
   gap: 1rem;
 
   @media (max-width: 589px) {
-    width: 80vw;
+    width: 90vw;
     margin: 0 auto;
+    min-width: 321.3px;
   }
 `
 
@@ -35,7 +36,8 @@ export const OrderInfoContainer = styled.section`
   gap: 1rem;
 
   @media (max-width: 589px) {
-    width: 80vw;
+    width: 90vw;
     margin: 0 auto;
+    min-width: 321.3px;
   }
 `

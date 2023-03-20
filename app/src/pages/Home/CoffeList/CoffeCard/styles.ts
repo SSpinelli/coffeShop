@@ -94,6 +94,11 @@ export const ButtonContainer = styled.div`
   cursor: pointer;
 
   color: ${(props) => props.theme['base-title']};
+
+  span {
+    display: flex;
+    align-items: center;
+  }
 `
 export const PlusAndMinusButton = styled.button`
   background-color: transparent;
