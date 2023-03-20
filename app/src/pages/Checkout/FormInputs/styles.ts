@@ -7,6 +7,10 @@ export const FormInputContainer = styled.div`
   background-color: ${(props) => props.theme['base-card']};
   padding: 2.5rem;
   border-radius: 6px;
+  /* width: 350px; */
+
+  @media (max-width: 768px) {
+  }
 `
 
 export const InputGrid = styled.div`
@@ -14,12 +18,18 @@ export const InputGrid = styled.div`
   grid-template-columns: 1fr 1.3fr 60px;
   gap: 16px 12px;
 
-  .street {
-    grid-column: 1 / 4;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
   }
 
-  .moreInfo {
-    grid-column: 2 / 4;
+  @media (min-width: 769px) {
+    .street {
+      grid-column: 1 / 4;
+    }
+
+    .moreInfo {
+      grid-column: 2 / 4;
+    }
   }
 `
 

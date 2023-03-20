@@ -22,10 +22,20 @@ export const UserInfoContainer = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-width: 589px) {
+    width: 80vw;
+    margin: 0 auto;
+  }
 `
 
 export const OrderInfoContainer = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-width: 589px) {
+    width: 80vw;
+    margin: 0 auto;
+  }
 `

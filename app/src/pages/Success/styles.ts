@@ -11,6 +11,9 @@ export const SuccessContainer = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    img {
+      width: 350px;
+    }
   }
 `
 
@@ -18,6 +21,11 @@ export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+
+  @media (max-width: 768px) {
+    width: 80vw;
+    align-items: center;
+  }
 `
 
 export const TitleContainer = styled.div`
@@ -43,7 +51,7 @@ export const InfoOrderContainer = styled.div`
   position: relative;
   background-color: ${(props) => props.theme.background};
   border-radius: 6px 36px;
-  width: 29.8rem;
+  width: 29.7rem;
   height: 16.15rem;
 
   &::before {
@@ -62,6 +70,15 @@ export const InfoOrderContainer = styled.div`
       #8047f8
     );
     z-index: -50;
+  }
+
+  @media (max-width: 768px) {
+    width: 85vw;
+    height: 16.15rem;
+
+    &::before {
+      width: 86vw;
+    }
   }
 `
 const ICON_COLOR = {

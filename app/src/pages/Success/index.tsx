@@ -53,7 +53,7 @@ export function Success() {
           </ParagraphInfo>
         </InfoOrderContainer>
       </MainContainer>
-      <img src={ilustration} width="492px" alt="" />
+      <img src={ilustration} alt="" />
     </SuccessContainer>
   )
 }

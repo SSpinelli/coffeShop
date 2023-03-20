@@ -5,7 +5,6 @@ export const OrderContainer = styled.div`
   flex-direction: column;
   background-color: ${(props) => props.theme['base-card']};
   border-radius: 6px 44px;
-  min-width: 368px;
   padding-top: 40px;
 `
 
