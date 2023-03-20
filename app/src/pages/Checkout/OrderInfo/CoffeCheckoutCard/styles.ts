@@ -9,8 +9,14 @@ export const CoffeCheckouCardContainer = styled.div`
     height: 4rem;
   }
 
-  @media (max-width: 373px) {
-    padding: 0 60px 0 10px;
+  @media (max-width: 405px) {
+    padding: 0 20px 0 10px;
+    min-width: 321px;
+
+    img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
   }
 `
 
